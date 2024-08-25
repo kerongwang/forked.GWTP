@@ -206,6 +206,14 @@
             <id>${project.artifactId}-site</id>
             <url>http://arcbees.github.io/GWTP/</url>
         </site>
+        <repository>
+            <id>github</id>
+            <name>ArcBees GWT Platform</name>
+            <url>https://maven.pkg.github.com/kerongwang/forked.GWTP</url>
+            <snapshots>
+              <enabled>true</enabled>
+                </snapshots>			
+        </repository>
     </distributionManagement>
 
     <mailingLists>
@@ -224,7 +232,7 @@
     </modules>
 
     <properties>
-        <target.jdk>1.7</target.jdk>
+        <target.jdk>1.8</target.jdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <gwt.style>OBF</gwt.style>
@@ -249,7 +257,7 @@
         <maven-release-plugin.version>2.5.1</maven-release-plugin.version>
 
         <!-- Client -->
-        <gwt.version>2.8.0</gwt.version>
+        <gwt.version>2.11.0</gwt.version>
         <!-- when you update the gwt version please also update the dtds in all gwt.xml files -->
         <gin.version>2.1.2</gin.version>
         <gwt-jackson.version>0.14.1</gwt-jackson.version>

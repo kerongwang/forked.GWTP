@@ -8,7 +8,7 @@ if [ -z $1 ]; then
 fi
 
 if [ -z $JAVA_HOME ]; then
-    echo "Please set JAVA_HOME > export JAVA_HOME=`/usr/libexec/java_home -v 1.7`";
+    echo "Please set JAVA_HOME > export JAVA_HOME=`/usr/libexec/java_home -v 1.8`";
     exit
 fi
 
