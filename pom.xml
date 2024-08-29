@@ -9,7 +9,7 @@
 
     <groupId>com.gwtplatform</groupId>
     <artifactId>gwtp</artifactId>
-    <version>1.6</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>GWT-Platform</name>
     <inceptionYear>2010</inceptionYear>
@@ -24,6 +24,20 @@
             <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
+
+    <repositories>
+        <repository>
+            <id>Arcbees GWTP</id>
+            <name>Arcbees GWT Platform</name>
+            <url>https://maven.pkg.github.com/kerongwang/forked.GWTP</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <organization>
         <name>Arcbees</name>
@@ -232,6 +246,7 @@
     </modules>
 
     <properties>
+        <revision>1.6-fix</revision>
         <target.jdk>1.8</target.jdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
