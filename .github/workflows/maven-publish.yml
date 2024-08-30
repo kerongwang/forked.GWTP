@@ -5,9 +5,13 @@ name: AccBees GWT Platform Maven Package
 
 on:
   workflow_dispatch:
-  release:
-    types: [created]
-
+    # Inputs the workflow accepts.
+    inputs:
+      revision:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Publish Version'
+        # Default value if no value is explicitly provided
+        default: ''
 jobs:
   build:
 
@@ -26,10 +30,20 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml -DskipTests
+- name: Build with Maven
+  run: |
+    if [ -z "${{ github.event.inputs.revision }}" ]; then
+      mvn -B package --file pom.xml -DskipTests
+    else
+      mvn -B package --file pom.xml -DskipTests -Drevision=${{ github.event.inputs.revision }}
+    fi
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ secrets.token }}
+- name: Publish to GitHub Packages Apache Maven
+  run: |
+    if [ -z "${{ github.event.inputs.revision }}" ]; then
+      mvn deploy -DskipTests -s $GITHUB_WORKSPACE/settings.xml
+    else
+      mvn deploy -DskipTests -Drevision=${{ github.event.inputs.revision }} -s $GITHUB_WORKSPACE/settings.xml
+    fi
+  env:
+    GITHUB_TOKEN: ${{ secrets.token }}
