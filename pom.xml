@@ -25,20 +25,6 @@
         </license>
     </licenses>
 
-    <repositories>
-        <repository>
-            <id>Arcbees GWTP</id>
-            <name>Arcbees GWT Platform</name>
-            <url>https://maven.pkg.github.com/kerongwang/forked.GWTP</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <organization>
         <name>Arcbees</name>
         <url>http://arcbees.com</url>
@@ -216,18 +202,18 @@
     </ciManagement>
 
     <distributionManagement>
-        <site>
-            <id>${project.artifactId}-site</id>
-            <url>http://arcbees.github.io/GWTP/</url>
-        </site>
         <repository>
             <id>github</id>
             <name>ArcBees GWT Platform</name>
             <url>https://maven.pkg.github.com/kerongwang/forked.GWTP</url>
             <snapshots>
               <enabled>true</enabled>
-                </snapshots>			
+            </snapshots>
         </repository>
+        <site>
+            <id>${project.artifactId}-site</id>
+            <url>http://arcbees.github.io/GWTP/</url>
+        </site>
     </distributionManagement>
 
     <mailingLists>
