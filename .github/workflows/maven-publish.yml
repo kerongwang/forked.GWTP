@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      rvision:
+      revision:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Publish Version'
         # Default value if no value is explicitly provided
@@ -31,7 +31,7 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -DskipTests -Drevision=${{github.event.inputs.gcc-version}}
+      run: mvn -B package --file pom.xml -DskipTests -Drevision=${{github.event.inputs.revision}}
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
