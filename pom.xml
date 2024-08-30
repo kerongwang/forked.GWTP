@@ -2,15 +2,9 @@
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
-
     <groupId>com.gwtplatform</groupId>
     <artifactId>gwtp</artifactId>
-    <version>2.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>GWT-Platform</name>
     <inceptionYear>2010</inceptionYear>
@@ -202,6 +196,14 @@
     </ciManagement>
 
     <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>ArcBees GWT Platform</name>
+            <url>https://maven.pkg.github.com/kerongwang/forked.GWTP</url>
+            <snapshots>
+              <enabled>true</enabled>
+            </snapshots>
+        </repository>
         <site>
             <id>${project.artifactId}-site</id>
             <url>http://arcbees.github.io/GWTP/</url>
@@ -224,17 +226,8 @@
         <module>processor-tools</module>
     </modules>
 
-    <repositories>
-        <repository>
-            <id>google-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/google-snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <properties>
+        <revision>2.0-SNAPSHOT</revision>
         <target.jdk>1.8</target.jdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
