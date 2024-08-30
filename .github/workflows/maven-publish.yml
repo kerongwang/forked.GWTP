@@ -30,20 +30,20 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-- name: Build with Maven
-  run: |
-    if [ -z "${{ github.event.inputs.revision }}" ]; then
-      mvn -B package --file pom.xml -DskipTests
-    else
-      mvn -B package --file pom.xml -DskipTests -Drevision=${{ github.event.inputs.revision }}
-    fi
+    - name: Build with Maven
+      run: |
+        if [ -z "${{ github.event.inputs.revision }}" ]; then
+          mvn -B package --file pom.xml -DskipTests
+        else
+          mvn -B package --file pom.xml -DskipTests -Drevision=${{ github.event.inputs.revision }}
+        fi
 
-- name: Publish to GitHub Packages Apache Maven
-  run: |
-    if [ -z "${{ github.event.inputs.revision }}" ]; then
-      mvn deploy -DskipTests -s $GITHUB_WORKSPACE/settings.xml
-    else
-      mvn deploy -DskipTests -Drevision=${{ github.event.inputs.revision }} -s $GITHUB_WORKSPACE/settings.xml
-    fi
-  env:
-    GITHUB_TOKEN: ${{ secrets.token }}
+    - name: Publish to GitHub Packages Apache Maven
+      run: |
+        if [ -z "${{ github.event.inputs.revision }}" ]; then
+          mvn deploy -DskipTests -s $GITHUB_WORKSPACE/settings.xml
+        else
+          mvn deploy -DskipTests -Drevision=${{ github.event.inputs.revision }} -s $GITHUB_WORKSPACE/settings.xml
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.token }}
